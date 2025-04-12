@@ -1,0 +1,23 @@
+name: Adonis API Branch Checks
+on:
+  push:
+    branches-ignore:
+      - main
+  workflow_dispatch:
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.x'
+
+      - name: Build and Test Adonis API
+        uses: Treebion/adonis-js-test-build@v1
+        with:
+          image-name: 'adonisjs-api'
