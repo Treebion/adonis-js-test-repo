@@ -4,8 +4,22 @@ on:
     branches-ignore:
       - main
   workflow_dispatch:
-    
+
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "22.x"
+
+      - name: Run Adonis API Tests
+        uses: Treebion/adonis-js-test-build/test@john-3
+                
   build:
     runs-on: ubuntu-latest
     steps:
@@ -15,12 +29,9 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22.x'
+          node-version: "22.x"
 
-      - name: Run Adonis API Tests
-        uses: Treebion/adonis-js-test-build/test@john-3
-
-      - name: Build Adonis API        
+      - name: Build Adonis API
         uses: Treebion/adonis-js-test-build/build@john-3
         with:
-          image-name: 'adonisjs-api'      
+          image-name: "adonisjs-api"
