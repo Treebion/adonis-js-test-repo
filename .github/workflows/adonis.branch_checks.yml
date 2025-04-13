@@ -17,7 +17,10 @@ jobs:
         with:
           node-version: '22.x'
 
-      - name: Build and Test Adonis API        
-        uses: Treebion/adonis-js-test-build@v3
+      - name: Run Adonis API Tests
+        uses: Treebion/adonis-js-test-build/test@john-1
+
+      - name: Build Adonis API        
+        uses: Treebion/adonis-js-test-build/build@john-1
         with:
-          image-name: 'adonisjs-api'
+          image-name: 'adonisjs-api'      
